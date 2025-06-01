@@ -1,4 +1,4 @@
-// src/utils/ContactManager.ts
+// Data layer for managing contacts in localStorage
 import { Contact } from '../types';
 
 const STORAGE_KEY = 'contacts';

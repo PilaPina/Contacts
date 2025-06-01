@@ -32,18 +32,28 @@
 }
 
 .noContacts {
-  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--accent);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(65, 4, 67, 0.034);
+  font-size: 1.75rem;
   color: var(--primary);
-  opacity: 0.7;
+  opacity: 0.9;
   margin: 2rem auto;
-  width: 100%;
+  width: 90%;
   text-align: center;
+  gap: 1rem;
 }
 
 @media (max-width: 1024px) {
   .contactCard {
     flex: 1 1 45%;
     max-width: 48%;
+  }
+  .noContacts {
+    font-size: 1.5rem;
   }
 }
 

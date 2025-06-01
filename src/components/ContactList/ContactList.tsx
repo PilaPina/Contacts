@@ -14,11 +14,16 @@ export default function ContactList({ contacts, onEdit, onRemove }: Props) {
   return (
     <div className={styles.contactList}>
       {contacts.length === 0 && (
-        <p className={styles.noContacts}>
-          Welcome to your contact list! <br />
-          <br /> It looks like you don&apos;t have any contacts yet. <br /> You
-          can add one by clicking the button in the sidebar.
-        </p>
+        <div className={styles.noContacts}>
+          <div>Welcome to your contact list!</div>
+          <div>It looks like you don&apos;t have anything stored here.</div>
+          <div>Try adding a contact by clicking the button in the sidebar.</div>
+          <div>
+            Please note that the contacts that you add here are only stored in
+            your browser. That means that if you clear your history or switch
+            browsers, you will lose them.
+          </div>
+        </div>
       )}
       {contacts.map((c) => (
         <div key={c.email} className={styles.contactCard}>
