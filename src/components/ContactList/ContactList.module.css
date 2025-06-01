@@ -1,0 +1,61 @@
+/* Contact list container */
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  justify-content: flex-start;
+}
+
+/* Contact card */
+.contactCard {
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--accent);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(65, 4, 67, 0.034);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 30%;
+  max-width: 26%;
+  min-width: 280px;
+  min-height: 280px;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.noContacts {
+  font-size: 2rem;
+  color: var(--primary);
+  opacity: 0.7;
+  margin: 2rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .contactCard {
+    flex: 1 1 45%;
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 700px) {
+  .contactCard {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .contactCard { flex: 1 1 calc(50% - 1rem); }
+}
+@media (max-width: 480px) {
+  .contactCard { flex: 1 1 100%; }
+}

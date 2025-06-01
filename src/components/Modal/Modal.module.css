@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.content {
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  padding: 2rem 2rem 1.5rem 2rem;
+  min-width: 320px;
+  max-width: 95vw;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  /* Allow child components to style themselves */
+  box-sizing: border-box;
+}
+
+.large {
+  width: 480px;
+  max-width: 98vw;
+}
+
+.medium {
+  width: 340px;
+  max-width: 95vw;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Ensure form inside modal is styled correctly */
+.content :global(.form-container) {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    min-width: 0;
+  }
+  .large, .medium {
+    width: 92vw;
+    min-width: 0;
+  }
+}
