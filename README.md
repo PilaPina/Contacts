@@ -12,7 +12,7 @@ Backend storage will be implemented on a later date.
 - Global CSS variables & theming
 - Local Storage
 - Accessability features
-- Framer-motion for initial loading screen
+- Framer-motion for initial silly bounce in loading screen and for some onHover effect for button
 
 ------
 

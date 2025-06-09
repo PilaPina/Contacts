@@ -3,6 +3,7 @@ import React from "react";
 import { Contact } from "../../types";
 import styles from "./ContactList.module.css";
 import Button from "../Button/Button";
+import { motion } from "framer-motion";
 
 interface Props {
   contacts: Contact[];
@@ -26,7 +27,14 @@ export default function ContactList({ contacts, onEdit, onRemove }: Props) {
         </div>
       )}
       {contacts.map((c) => (
-        <div key={c.email} className={styles.contactCard}>
+        <motion.div
+          key={c.email}
+          className={styles.contactCard}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 18 }}
+          whileTap={{ scale: 0.97 }}
+        >
           <h3>{c.name}</h3>
           <p>{c.email}</p>
           {c.phoneNumber && <p>{c.phoneNumber}</p>}
@@ -41,7 +49,7 @@ export default function ContactList({ contacts, onEdit, onRemove }: Props) {
               Remove
             </Button>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

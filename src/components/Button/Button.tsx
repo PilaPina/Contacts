@@ -1,31 +1,38 @@
-'use client';
-import React from 'react';
-import styles from './Button.module.css';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import styles from "./Button.module.css";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'success' | 'danger';
+interface ButtonProps
+  extends React.ComponentPropsWithoutRef<typeof motion.button> {
+  variant?: "primary" | "secondary" | "success" | "danger";
 }
 
 export default function Button({
-  variant = 'primary',
+  variant = "primary",
   children,
-  className = '',
+  className = "",
   ...props
 }: ButtonProps) {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       className={[
         styles.button,
         styles[variant],
-        variant === 'primary' ? styles.primary : '',
-        variant === 'secondary' ? styles.secondary : '',
-        variant === 'success' ? styles.success : '',
-        variant === 'danger' ? styles.danger : '',
+        variant === "primary" ? styles.primary : "",
+        variant === "secondary" ? styles.secondary : "",
+        variant === "success" ? styles.success : "",
+        variant === "danger" ? styles.danger : "",
         className,
-      ].filter(Boolean).join(' ')}
+      ]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }
