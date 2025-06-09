@@ -8,12 +8,14 @@ import styles from "./page.module.css";
 import "./globals.css";
 import Modal from "../components/Modal/Modal";
 import Form from "../components/Form/Form";
+import Button from "../components/Button/Button";
 
 export default function Page() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editingContact, setEditingContact] = useState<Contact | null>(null);
+  const [filteredContact, setFilteredContact] = useState<Contact | null>(null);
 
   // initial 2.5s loader
   useEffect(() => {
@@ -30,6 +32,24 @@ export default function Page() {
       return () => window.removeEventListener("contactsChanged", onChange);
     }
   }, [loading]);
+
+  // Adding handler for fetching contact by name
+  useEffect(() => {
+    function handleShowContactByName(e: CustomEvent) {
+      const name = e.detail;
+      const found = getAll().find((c) => c.name === name);
+      setFilteredContact(found || null);
+    }
+    window.addEventListener(
+      "showContactByName",
+      handleShowContactByName as EventListener
+    );
+    return () =>
+      window.removeEventListener(
+        "showContactByName",
+        handleShowContactByName as EventListener
+      );
+  }, []);
 
   const handleEdit = (c: Contact) => {
     setEditingContact(c);
@@ -48,15 +68,40 @@ export default function Page() {
     window.dispatchEvent(new Event("contactsChanged"));
   };
 
+  // Handler to clear filter (show all contacts)
+  const handleClearFilter = () => setFilteredContact(null);
+
   if (loading) return <LoadingScreen />;
 
   return (
     <div className={styles.container}>
-      <ContactList
-        contacts={contacts}
-        onEdit={handleEdit}
-        onRemove={handleRemove}
-      />
+      <div className={styles.contactList}>
+        <ContactList
+          contacts={
+            filteredContact
+              ? filteredContact
+                ? [filteredContact]
+                : []
+              : contacts
+          }
+          onEdit={handleEdit}
+          onRemove={handleRemove}
+        />
+        {filteredContact && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              paddingTop: "1.5rem",
+            }}
+          >
+            <Button variant="primary" onClick={handleClearFilter}>
+              Show all contacts
+            </Button>
+          </div>
+        )}
+      </div>
       <Modal
         open={editModalOpen}
         onClose={() => {

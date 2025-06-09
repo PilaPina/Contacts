@@ -4,9 +4,9 @@ import { Moon, Sun, UserPlus, Search } from "lucide-react";
 import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
 import styles from "./Sidebar.module.css";
-import { Contact } from "../../types";
-import { addContact, getAll } from "../../utils/ContactManager";
 import Button from "../Button/Button";
+import { addContact } from "../../utils/ContactManager";
+import { Contact } from "../../types";
 
 export default function Sidebar() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -17,16 +17,11 @@ export default function Sidebar() {
   });
   const [showAdd, setShowAdd] = useState(false);
   const [showGet, setShowGet] = useState(false);
-  const [contacts, setContacts] = useState<Contact[]>([]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  useEffect(() => {
-    setContacts(getAll());
-  }, []);
 
   const handleAdd = (c: Contact) => {
     addContact(c); // writes to localStorage
@@ -34,14 +29,13 @@ export default function Sidebar() {
       // ← signal “hey, contacts changed!”
       new Event("contactsChanged")
     );
-    setContacts(getAll());
     setShowAdd(false);
   };
 
   const handleGet = (name: string) => {
-    const c = contacts.find((x) => x.name === name);
-    if (c) alert(JSON.stringify(c, null, 2));
-    else alert("Contact not found"); //TODO: remove alert and create better error handling
+    window.dispatchEvent(
+      new CustomEvent("showContactByName", { detail: name })
+    );
     setShowGet(false);
   };
 

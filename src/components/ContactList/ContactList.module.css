@@ -22,7 +22,7 @@
   min-width: 280px;
   min-height: 280px;
 }
-
+/* Button container */
 .actions {
   margin-top: auto;
   display: flex;
@@ -67,5 +67,8 @@
   .contactCard { flex: 1 1 calc(50% - 1rem); }
 }
 @media (max-width: 480px) {
+  .contactList {
+    margin-top: 1.5rem;
+  }
   .contactCard { flex: 1 1 100%; }
 }
