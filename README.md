@@ -14,7 +14,14 @@ Backend storage will be implemented on a later date.
 - Accessability features
 - Framer-motion for initial loading screen
 
+-------
 
+School work notes:
+- Using conditionals for rendering UI based on state like loading, filtering contacts, modal etc. 
+- Using ternaries for button variants, theme toggling and conditional rendering of fields and components. 
+- if statements used for logic in event handlers and form submission. 
+
+![Contact website with add contact modal open](<Screenshot 2025-06-09 at 14.30.34.png>)
 -------
 
 
