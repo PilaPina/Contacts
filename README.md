@@ -29,6 +29,10 @@ In this project:
 #### Loops & Iterators
 - Using array iterators and array methods for UI rendering and data management
 
+### Functions
+- Functions are used throughout this project. 
+- They are used for app logic and UI to direct data manipulation.  
+
 -------
 
 
