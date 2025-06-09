@@ -1,8 +1,10 @@
 This is a simple contact list site for personal use. 
-For now, the data (contacts) is run on local storage only, so each user will have their own seperate contact list saved in their browser. 
-If you (hi user) clear your browser storage or open this with a different browser you will loose all of your contacts. 
 
-Storage backend will be implemented on a later date. 
+For now, the data (contacts) is run on local storage only, so each user will have their own seperate contact list saved in their browser. 
+
+If you (Hi User!) clear your browser storage or open this with a different browser you will loose all of your contacts. 
+
+Backend storage will be implemented on a later date. 
 
 - Next.js App Router
 - React with Typescript
@@ -11,6 +13,9 @@ Storage backend will be implemented on a later date.
 - Local Storage
 - Accessability features
 - Framer-motion for initial loading screen
+
+
+-------
 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
